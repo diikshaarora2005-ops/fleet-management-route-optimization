@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import java.util.Optional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class VehicleController {
@@ -21,6 +23,10 @@ public class VehicleController {
 	@GetMapping("/vehicles")
 	public List<Vehicle> getAllVehicles() {
 	    return vehicleService.getAllVehicles();
+	}
+	@GetMapping("/vehicles/{id}")
+	public Optional<Vehicle> getVehicleById(@PathVariable Long id) {
+	    return vehicleService.getVehicleById(id);
 	}
 
 }
