@@ -6,6 +6,7 @@ import com.fleet.management.repository.VehicleRepository;
 import com.fleet.management.entity.Vehicle;
 import com.fleet.management.dto.VehicleDto;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VehicleService {
@@ -29,6 +30,9 @@ public class VehicleService {
 	}
 	public List<Vehicle> getAllVehicles() {
 	    return vehicleRepository.findAll();
+	}
+	public Optional<Vehicle> getVehicleById(Long id) {
+	    return vehicleRepository.findById(id);
 	}
 
 }
