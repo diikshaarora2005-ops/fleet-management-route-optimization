@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.fleet.management.repository.VehicleRepository;
 import com.fleet.management.entity.Vehicle;
 import com.fleet.management.dto.VehicleDto;
+import java.util.List;
 
 @Service
 public class VehicleService {
@@ -25,6 +26,9 @@ public class VehicleService {
 	}
 	public Vehicle saveVehicle(Vehicle vehicle) {
 	    return vehicleRepository.save(vehicle);
+	}
+	public List<Vehicle> getAllVehicles() {
+	    return vehicleRepository.findAll();
 	}
 
 }
