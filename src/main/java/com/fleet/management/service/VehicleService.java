@@ -47,5 +47,12 @@ public class VehicleService {
 
 	    return vehicleRepository.save(vehicle);
 	}
+	public void deleteVehicle(Long id) {
+
+	    Vehicle vehicle = vehicleRepository.findById(id)
+	            .orElseThrow(() -> new NoSuchElementException("Vehicle not found"));
+
+	    vehicleRepository.delete(vehicle);
+	}
 
 }
