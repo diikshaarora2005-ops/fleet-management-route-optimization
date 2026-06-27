@@ -5,7 +5,8 @@ import com.fleet.management.service.VehicleService;
 import com.fleet.management.entity.Vehicle;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public class VehicleController {
@@ -16,6 +17,10 @@ public class VehicleController {
 	@PostMapping("/vehicles")
 	public Vehicle addVehicle(@RequestBody Vehicle vehicle) {
 	    return vehicleService.saveVehicle(vehicle);
+	}
+	@GetMapping("/vehicles")
+	public List<Vehicle> getAllVehicles() {
+	    return vehicleService.getAllVehicles();
 	}
 
 }
