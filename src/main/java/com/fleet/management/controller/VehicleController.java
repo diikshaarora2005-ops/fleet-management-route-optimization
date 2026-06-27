@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 public class VehicleController {
@@ -27,6 +28,10 @@ public class VehicleController {
 	@GetMapping("/vehicles/{id}")
 	public Optional<Vehicle> getVehicleById(@PathVariable Long id) {
 	    return vehicleService.getVehicleById(id);
+	}
+	@PutMapping("/vehicles/{id}")
+	public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+	    return vehicleService.updateVehicle(id, vehicle);
 	}
 
 }
