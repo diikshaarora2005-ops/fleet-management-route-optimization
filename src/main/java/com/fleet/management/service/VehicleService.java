@@ -7,6 +7,7 @@ import com.fleet.management.entity.Vehicle;
 import com.fleet.management.dto.VehicleDto;
 import java.util.List;
 import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 public class VehicleService {
@@ -33,6 +34,18 @@ public class VehicleService {
 	}
 	public Optional<Vehicle> getVehicleById(Long id) {
 	    return vehicleRepository.findById(id);
+	}
+	public Vehicle updateVehicle(Long id, Vehicle updatedVehicle) {
+
+	    Vehicle vehicle = vehicleRepository.findById(id)
+	            .orElseThrow(() -> new NoSuchElementException("Vehicle not found"));
+
+	    vehicle.setVehicleNumber(updatedVehicle.getVehicleNumber());
+	    vehicle.setVehicleType(updatedVehicle.getVehicleType());
+	    vehicle.setDriverName(updatedVehicle.getDriverName());
+	    vehicle.setCapacity(updatedVehicle.getCapacity());
+
+	    return vehicleRepository.save(vehicle);
 	}
 
 }
