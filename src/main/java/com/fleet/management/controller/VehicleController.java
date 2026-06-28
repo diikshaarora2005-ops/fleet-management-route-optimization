@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
 public class VehicleController {
@@ -32,6 +33,10 @@ public class VehicleController {
 	@PutMapping("/vehicles/{id}")
 	public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
 	    return vehicleService.updateVehicle(id, vehicle);
+	}
+	@DeleteMapping("/vehicles/{id}")
+	public void deleteVehicle(@PathVariable Long id) {
+	    vehicleService.deleteVehicle(id);
 	}
 
 }
