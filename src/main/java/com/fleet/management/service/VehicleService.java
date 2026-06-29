@@ -7,7 +7,7 @@ import com.fleet.management.entity.Vehicle;
 import com.fleet.management.dto.VehicleDto;
 import java.util.List;
 import java.util.Optional;
-import java.util.NoSuchElementException;
+import com.fleet.management.exception.ResourceNotFoundException;
 
 @Service
 public class VehicleService {
@@ -38,7 +38,7 @@ public class VehicleService {
 	public Vehicle updateVehicle(Long id, Vehicle updatedVehicle) {
 
 	    Vehicle vehicle = vehicleRepository.findById(id)
-	            .orElseThrow(() -> new NoSuchElementException("Vehicle not found"));
+	    		.orElseThrow(() -> new ResourceNotFoundException("Vehicle not found"));
 
 	    vehicle.setVehicleNumber(updatedVehicle.getVehicleNumber());
 	    vehicle.setVehicleType(updatedVehicle.getVehicleType());
@@ -50,7 +50,7 @@ public class VehicleService {
 	public void deleteVehicle(Long id) {
 
 	    Vehicle vehicle = vehicleRepository.findById(id)
-	            .orElseThrow(() -> new NoSuchElementException("Vehicle not found"));
+	    		.orElseThrow(() -> new ResourceNotFoundException("Vehicle not found"));
 
 	    vehicleRepository.delete(vehicle);
 	}
